@@ -30,7 +30,7 @@ Python 3: to run the automation and attack scripts
 # Environment Setup
 On a fresh Ubuntu 20.04 system, run the following commands in order to set up the environment:
 
-1. Clone the repository: git clone https://github.com/hailin-creat/Ledger.git
+Clone the repository: git clone https://github.com/hailin-creat/Ledger.git
 
 cd Ledger
 
@@ -54,4 +54,29 @@ sudo apt install libc6-dbg:i386
 
 sudo dpkg --add-architecture i386
 
+# Building the Target Program
+In the project directory, navigate to libmodbus-2.9.3/ and build the server:(Some error messages in the compilation will not affect the experiment.)
+
+cd libmodbus-2.9.3
+
+./autogen.sh
+
+./configure   --host=i686-linux-gnu   --disable-dependency-tracking   CFLAGS="-m32 -fno-stack-protector -no-pie -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=0 -g -O0"   LDFLAGS="-m32 -no-pie -z execstack -z norelro"
+
+make
+
+make install
+
+# Generating the Ledger Files
+Before running the defense, generate the ledger and parameter files from the target binary:
+
+python3 leger_generate.py ./libmodbus-2.9.3/tests/.libs/unit-test-server
+
+This will produce:
+
+leger.txt – Encrypted ledger entries used for runtime verification
+
+parameter.txt – Encryption key and counter seed used by Ledger_cfi.py
+
+These files are required for the defense to work and must match the exact binary you are testing.
 
