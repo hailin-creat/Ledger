@@ -98,8 +98,9 @@ Wait for the attack payload (exp.py) to be executed
 If the attack is successful (control flow is hijacked), the experiment executes the shellcode
 
 3. Launch the attack
+To successfully reproduce the attack (and execute the shellcode), you need to set the correct return address in exp.py that points to the shellcode in memory.
 
-In a separate terminal:
+In a separate terminal window, while the server is running under GDB (launched by automated_run.py), execute the attack script: 
 
 python3 exp.py
 
