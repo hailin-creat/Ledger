@@ -54,6 +54,8 @@ sudo apt install libc6-dbg:i386
 
 sudo dpkg --add-architecture i386
 
+pip3 install lief
+
 # Building the Target Program
 In the project directory, navigate to libmodbus-2.9.3/ and build the server:(Some error messages in the compilation will not affect the experiment.)
 
