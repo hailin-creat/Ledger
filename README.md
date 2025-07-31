@@ -97,7 +97,23 @@ Launch the Modbus server (unit-test-server)
 Wait for the attack payload (exp.py) to be executed
 If the attack is successful (control flow is hijacked), the experiment executes the shellcode
 
+3. Launch the attack
 
+In a separate terminal:
+
+python3 exp.py
+
+With Ledger defense enabled:
+The attack should be detected; program terminates immediately when control-flow mismatch is found.
+
+Without defense (baseline mode):
+If the payload is correct, the attack may execute the injected shellcode.
+
+-----------------------------------------Notes--------------------------------------------------------------
+
+If you do not set the correct return address in exp.py to point to the shellcode, the attack can still cause a segmentation fault (segfault) on the server side when the return address is overwritten with an invalid value.
+
+A segmentation fault also indicates that the attack successfully hijacked the control flow — the return address was tampered with — but the shellcode was not executed
 
 
 
