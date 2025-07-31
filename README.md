@@ -80,3 +80,27 @@ parameter.txt – Encryption key and counter seed used by Ledger_cfi.py
 
 These files are required for the defense to work and must match the exact binary you are testing.
 
+# Running the Experiment
+1. Enable or disable Ledger defense
+Edit :automated_run.py,
+ENABLE_LEDGER = True   # Enable Ledger CFI Defense
+ENABLE_LEDGER = False  # Run without defense (baseline)
+
+2. Run the target under GDB
+From the project root directory:
+
+python3 automated_run.py
+
+This will:
+Start GDB with or without Ledger defense
+Launch the Modbus server (unit-test-server)
+Wait for the attack payload (exp.py) to be executed
+If the attack is successful (control flow is hijacked), the experiment executes the shellcode
+
+
+
+
+
+
+
+
