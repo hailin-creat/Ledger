@@ -74,7 +74,7 @@ python3 leger_generate.py ./libmodbus-2.9.3/tests/.libs/unit-test-server
 
 This will produce:
 
-leger.txt – Encrypted ledger entries used for runtime verification
+Ledger.txt – Encrypted ledger entries used for runtime verification
 
 parameter.txt – Encryption key and counter seed used by Ledger_cfi.py
 
