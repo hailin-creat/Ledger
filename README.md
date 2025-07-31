@@ -1,4 +1,4 @@
-# Ledger
+# Ledger_ROP
 # Project Structure
 The project contains the following components:
 libmodbus-2.9.3/: Modbus protocol stack used as the target program for demonstrating control-flow hijacking attacks.
@@ -30,9 +30,9 @@ Python 3: to run the automation and attack scripts
 # Environment Setup
 On a fresh Ubuntu 20.04 system, run the following commands in order to set up the environment:
 
-Clone the repository: git clone https://github.com/hailin-creat/Ledger.git
+Clone the repository: git clone https://github.com/hailin-creat/Ledger_ROP.git
 
-cd Ledger
+cd Ledger_ROP
 
 sudo apt update
 
